@@ -1,3 +1,6 @@
+const shimmerContainer = document.querySelector(".shimmer-container");
+
+
 const options = {
     method: "GET" ,
     headers: {
@@ -5,8 +8,10 @@ const options = {
         "x-cg-demo-api-key" : "CG-mDVVqLm5xBDjvcVq523LnAmB",
     },
 
-};
+}; 
  let coins = [];
+ let itemsPerPage = 15;
+ let currentPage = 1;
 //fetching the data from api
 const fetchCoins = async () => {
     try{
@@ -17,26 +22,40 @@ const fetchCoins = async () => {
         const coinsData=await response.json();
         return coinsData;
     }catch (error){
-        console.error("Error while fetching app",error);
+        console.error("Error while fetching coin",error);
     }
 };
+const handleFavClick = (coinId) => {};
 
+const showShimmer = () => {
+    shimmerContainer.style.display = "flex";
+};
+
+const hideShimmer = () => {
+    shimmerContainer.style.display = "none";
+};
+
+const getCoinsToDisplay = (coins,page) => {
+    const start = (page-1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    return coins.slice(start, end);
+};
 //display the data on the page
 
 
-const display = (coins) =>{
+const displayCoins = (coins) =>{
     const tableBody = document.getElementById("crypto-table-body");
     tableBody.innerHTML = "";
-    coins.forEach(coin,index => {
+    coins.forEach((coin,index )=> {
         const row = document.createElement("tr");
         row.innerHTML = `
-        <td></td> 
-        <td><img src="https://assets.coingecko.com/coins/images/1/bitcoin.png?1547033579" alt="bitcoin" width="24" height="24"/></td>
-        <td>Bitcoin</td> 
-        <td>$ 45,000</td> 
-        <td>1,000,000</td> 
-        <td>$1,000,000,000</td> 
-        <td><i class="fa-solid fa-star">,</i></td> 
+        <td>${index}</td> 
+        <td><img src="${coin.image}" alt="${coin.name}" width="24" height="24"/></td>
+        <td>$${coin.name}</td> 
+        <td>$${coin.current_price}</td> 
+        <td>$${coin.total_volume}</td> 
+        <td>$${coin.market_cap}</td> 
+        <td><i class="fa-solid fa-star favourite-icon" data-id="${coin.id}></i></td> 
         `;
         tableBody.appendChild(row);
         
@@ -44,5 +63,13 @@ const display = (coins) =>{
 }
 
 document.addEventListener("DOMContentLoaded",async()=>{
-    coins = await fetchCoins();
-})
+    try{
+        showShimmer();
+        coins = await fetchCoins();
+        displayCoins(getCoinsToDisplay(coins,currentPage));
+        hideShimmer();  
+    }catch(error){
+        console.log(error);
+        hideShimmer();
+    } 
+});
