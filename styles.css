@@ -97,3 +97,31 @@ tr:hover {
         transform: rotate(1turn);
     }
 }
+
+#pagination {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+.page-button {
+    margin:0 5px;
+    padding:5px 10px;
+    border:1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+}
+.page-button-active {
+    background-color: #4caf50;
+    color:white;
+}
+
+.favorite-icon {
+    cursor :pointer;
+}
+
+.favorite-icon:hover,
+.favorite-icon.favorite{
+    color: gold;
+}
