@@ -75,6 +75,7 @@ const handleSearch = () =>{
 );
 currentPage = 1;
 displayCoins(getCoinsToDisplay(filteredCoins,currentPage),currentPage);
+renderPagination(filteredCoins);
 };
 //search
 
@@ -118,9 +119,13 @@ const displayCoins = (coins,currentPage) =>{
          data-id="${coin.id}"></i></td> 
         `;
        
+        row.addEventListener("click",()=>{
+            window.open(`coin/coin.html?id=${coin.id}`,"-blank");
+        });
        
         row.querySelector(".favourite-icon").addEventListener("click" , (event) =>{
             event.stopPropagation();
+            handleFavClick(coin.id);
         });
         tableBody.appendChild(row);
         
