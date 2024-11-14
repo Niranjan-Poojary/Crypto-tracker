@@ -38,7 +38,7 @@ referrerpolicy="no-referrer" />
         </div>
     </nav>
     <main>
-        <h1>Favorite Coins</h1>
+        <h1 style="text-align: center;">Favorite Coins</h1>
         <div class="shimmer-container" style="display:none">
             <div class="shimmer"></div>
         </div>
@@ -48,16 +48,25 @@ referrerpolicy="no-referrer" />
                   <th>Positions</th>
                   <th>Icon</th>
                   <th>Name</th>
-                  <th>Price</th>
-                  <th>24th Volume</th>
-                  <th>Market Cap</th>
+                  <th>Price
+                    <i id="sort-price-asc" class="fas fa-arrow-up sort-icon" title="Sort by price ascending"></i>
+                    <i id="sort-price-desc" class="fas fa-arrow-down sort-icon" title="Sort by price descending"></i>
+                  </th>
+                  <th>24th Volume
+                    <i id="sort-volume-asc" class="fas fa-arrow-up sort-icon" title="Sort by volume ascending"></i>
+                    <i id="sort-volume-desc" class="fas fa-arrow-down sort-icon" title="Sort by volume descending"></i>
+                  </th>
+                  <th>Market Cap
+                    <i id="sort-market-asc" class="fas fa-arrow-up sort-icon" title="Sort by master ascending"></i>
+                    <i id="sort-market-desc" class="fas fa-arrow-down sort-icon" title="Sort by master descending"></i></th>
+                  </th>
                 </tr>
             </thead>
             <tbody>
                 <!--Favourite coin rows will be inserted here by javascript-->
             </tbody>
         </table>
-        <p id="no-favorites" style="display: none">There are no liked coins</p>
+        <p id="no-favorites" style="display: none; text-align: center;">"You haven't liked any coins yet. Explore and add your favorites!"</p>
     </main>
 
     <script src="favorites.js"></script>
