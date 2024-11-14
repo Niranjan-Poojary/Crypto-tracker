@@ -44,18 +44,24 @@
                     <i id="sort-volume-asc" class="fa-solid fa-arrow-up"></i>
                     <i id="sort-volume-desc" class="fa-solid fa-arrow-down"></i>
                   </th>
-                  <th>Market Cap</th>
-                  <th>Favourites</th>
+                  <th>Market Cap
+                    <i id="sort-market-asc" class="fas fa-arrow-up sort-icon" title="Sort by market ascending"></i>
+                    <i id="sort-market-desc" class="fas fa-arrow-down sort-icon" title="Sort by market descending"></i>
+                  </th>
+                  <th>Favorite</th>
                </tr>
             </thead>
             <tbody id="crypto-table-body">
 
             </tbody>
         </table>
-        <div id="pagination"></div>
+        <div id="pagination-controls">
+            <button id="prev-button">Prev</button>
+            <button id="next-button">Next</button>
+        </div>
         <div class="shimmer-container">
             <div class="shimmer"></div>
-        </div>
+        </div><!-- Added shimmer container -->
     </main>
     <script src="./js/app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
